@@ -7,7 +7,7 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i index;
+	size_t i, index;
 	int tmp, swap, flag = 0;
 
 	if (array == NULL)
@@ -30,4 +30,4 @@ void selection_sort(int *array, size_t size)
 		if (flag != 0)
 			print_array(array, size);
 	}
-}
+i}

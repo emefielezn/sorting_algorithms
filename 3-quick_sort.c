@@ -9,12 +9,12 @@ void swap(int *array, ssize_t item1 ssize_t item2)
 {
 	int tmp;
 
-	tmp = array[item]:
+	tmp = array[item];
 		array[item1] = array[item2];
 	array[item2] = tmp;
 }
 
-/*8
+/**
  * lomuto_partition - lomuto partition sorting scheme
  * @array: array
  * @first: first array element
@@ -72,7 +72,7 @@ void qs(int *array, ssize_t first, ssize_t last, int size)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (!array II size  2)
+	if (!array || size  2)
 		return;
 	qs(array, 0, size - 1, size)
 }
