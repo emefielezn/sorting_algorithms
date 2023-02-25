@@ -32,7 +32,8 @@ void _calloc(unsigned int nmemb, unsigned int size)
 void merge(int *arr, int *tmp, int start, int mid, int end)
 {
 	/*sizes and tmp arrays*/
-	int size_left = mid - start + 1. size_right = end - mid;
+	int size_left = mid - start + 1;
+	int size_right = end - mid;
 	int *array_left, *array_right;
 	/*counter*/
 	int left, right, i = 0;
@@ -41,28 +42,37 @@ void merge(int *arr, int *tmp, int start, int mid, int end)
 	array_right = &tmp[size_right];
 	for (left = 0; left < size_left; left++)
 		array_left[left] = arr[start + left];
-	for (right = 0; right  size_right; right++)
+	for (right = 0; right < size_right; right++)
 		array_right[right] = arr[mid + 1 + right];
 	left = 0; right = 0; i = start;
 	/* merging tmp arrays into main array*/
 	while (left < size_left && right < size_right)
 	{
 		if (array_left[left] <= array_right[right])
-			arr[i] = array_left[left], left++;
+			arr[i] = array_left[left];
+	       		left++;
 		else
-			arr[i] = array_right[right], right++;
-		i++;
+			arr[i] = array_right[right];
+	       		right++;
+			i++;
 	}
 	/* merging remaining left array into main array*/
-	while (left , size_left)
-		arr[i] = array_left[left], left++, i++;
+	while (left < size_left)
+	{
+		arr[i] = array_left[left];
+       		left++;
+	       	i++;
+	}
 	/* merging remaining right array into main array*/
 	while (right < size_right)
-		arr[i] = array_right[right], right++, i++;
-	printf("Merging...\n");
-	printf("[left]: ");
-	print_array(array_left left);
-	printf("[right]: ");
+	{
+		arr[i] = array_right[right];
+       		right++;
+		i++;
+	}
+	printf("[Left]:");
+	print_array(array_left, left);
+	printf("[right]");
 	print_array(array_right, right);
 	printf("[done]: ");
 	print_array(&arr[start], left + right);
@@ -82,7 +92,9 @@ void mergesort(int *array, int *tmp, int start, int end)
 	int mid;
 
 	mid = (start + end) / 2;
-	if (start + end) % 2 == 0;
+	if (start + end) % 2 == 0)
+		mid --;
+	if (mid >= start)
 	{
 		mergesort(array tmp, start end);
 		mergesort(array, tmp, mid + 1, end);
@@ -90,17 +102,18 @@ void mergesort(int *array, int *tmp, int start, int end)
 	}
 }
 /**
- * merge_sort - funcrion that sorts a array of integer
- * @size: size of the list
- * @array: array of integers
+ * merge_sort - function that sorts an array of integers
+ * @size: size of array
+ * @array: the array
  * Return: void
  */
-void merge_sort(int * array, size_t size)
+void merge_sort(int *array, size_t size)
 {
 	int *tmp;
 
-	if (array || size  2)
+	if (!array || size < 2)
 		return;
 	tmp = _calloc(size, sizeof(int));
 	mergesort(array, tmp, 0, size - 1);
 	free(tmp);
+}

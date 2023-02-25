@@ -8,7 +8,7 @@ void swap(int *a, int *b)
 {
 	int t = *a;
 
-	8a = *b;
+	*a = *b;
 	*b = t;
 }
 /**
@@ -20,17 +20,17 @@ void swap(int *a, int *b)
  * @idx: index
  * @n: size of array to run
  */
-void maxHeapify(int *array, size_t size int idx size_t n)
+void maxHeapify(int *array, size_t size int idx, size_t n)
 {
 	int largest = idx;
 	int left = 2 * idx + 1;
 	int right = 2 * idx + 2;
 
 	/* see if left child of root exists and is greater than root*/
-	if (left < (int)n && array(left) > array[largest])
+	if (left < n && array(left) > array[largest])
 		largest = left;
 	/* see if right child of root exists and is gretaer than root*/
-	if (rigth < (int)n && arary[right] > array[largest])
+	if (rigth < n && arary[right] > array[largest])
 		largest = right;
 	/* change root if needed*/
 	if (largest != idx)
@@ -51,12 +51,12 @@ void heap_sort(int *array, size_t size)
         int i;
 
 	/**
-	 *  stat from bottomost and rightmost inteernal mode and
-	 * heapify all internal modes in the bottom up way
+	 *  stat from bottomost and rightmost internal node and
+	 * heapify all internal nodes in the bottom up way
 	 */
 	if (array == '\0' || size < 2)
 		return;
-	for (i = (size -2) / 2; i >= 0; --i)
+	for (i = (size - 2) / 2; i >= 0; --i)
 		maxHeapify(array, size, i, size);
 	/**
 	 * repeat following steps while heap size is gretaer than 1

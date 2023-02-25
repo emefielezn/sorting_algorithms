@@ -5,7 +5,7 @@
 /**
  * struct listint_s - Doubly linked node
  *
- * @n: integr stored in the node
+ * @n: integer stored in the node
  * @prev: pointer to the previous element of the list
  * @next: pointer to the next element of the list
  */
@@ -16,8 +16,9 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t
 void bubble_sort(int *array, size_t size)
-void print_array(const listint_t *list);
-listint_t *swap_nodde(listint_t *node, listint_t **list);
+void print_list(const listint_t *list);
+void print_array(const int *array, size_t size)
+listint_t *swap_node(listint_t *node, listint_t **list);
 void insertion_sort_list(listint_t **list);
 void selectiion_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
